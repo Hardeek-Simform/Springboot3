@@ -1,6 +1,7 @@
 package com.practical3.vehicleregistory.service;
 
 import com.practical3.vehicleregistory.entity.UserVehicle;
+import com.practical3.vehicleregistory.exception.UserNotFoundException;
 import com.practical3.vehicleregistory.repository.UserVehicleRepo;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +16,11 @@ public class EmployeeService {
     public void deleteEntry(int billNo) {
         ArrayList<UserVehicle> usersVehList = UserVehicleRepo.getUsersVehList();
         UserVehicle userVeh = usersVehList.stream().filter(user -> user.getBillNo() == billNo).findFirst().get();
-        usersVehList.remove(userVeh);
+        if (userVeh == null) {
+            throw new UserNotFoundException();
+        } else {
+            usersVehList.remove(userVeh);
+        }
         UserVehicleRepo.setUsersVehList(usersVehList);
     }
 }

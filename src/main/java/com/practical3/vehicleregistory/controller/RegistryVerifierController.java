@@ -18,7 +18,7 @@ public class RegistryVerifierController {
     @Autowired
     VehicleRegistryService vehicleRegistryService;
 
-    @GetMapping("/vehNo/{vehicleNo}")
+    @GetMapping("/{vehicleNo}")
     public VerifierDTO getVerificationRegistry(@PathVariable("vehicleNo") String vehicleNo) {
         vehicleSearch++;
         log.info("Inside RegistryVerifierController, Vehicle Search called:" + vehicleSearch);

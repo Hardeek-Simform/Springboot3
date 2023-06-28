@@ -19,8 +19,7 @@ public class EmployeeController {
     private static int deleteCall = 0;
     @Autowired
     EmployeeService employeeService;
-
-    @GetMapping("/all")
+    @GetMapping
     public ResponseEntity<ArrayList<UserVehicle>> displayAllData() {
         userListCall++;
         log.info("inside EmployeeController, all data requested:" + userListCall);
@@ -31,10 +30,10 @@ public class EmployeeController {
         return ResponseEntity.of(Optional.of(vehicles));
     }
 
-    @DeleteMapping("/delete/{billNo}")
+    @DeleteMapping("/{billNo}")
     public void addUserVehicle(@PathVariable("billNo") int billNo) {
         deleteCall++;
-        log.info("inside EmployeeController, total data deletion called:" + userListCall);
+        log.warn("inside EmployeeController, total data deletion called:" + userListCall);
         employeeService.deleteEntry(billNo);
     }
 }

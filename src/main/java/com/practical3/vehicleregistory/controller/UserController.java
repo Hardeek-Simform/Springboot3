@@ -20,21 +20,21 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @PostMapping("/add")
+    @PostMapping
     public ArrayList<UserDTO> addUserVehicle(@RequestBody UserDTO userDTO) {
         addCalled++;
         log.info("Inside UserController, add called by user:" + addCalled);
         return userService.addData(userDTO);
     }
 
-    @GetMapping("/viewAll")
+    @GetMapping
     public ArrayList<UserDTO> addUserVehicle() {
         viewAllCalled++;
         log.info("Inside UserController, view all called by user:" + viewAllCalled);
         return userService.getAllUserVehicles();
     }
 
-    @GetMapping("/view/{billNo}")
+    @GetMapping("/{billNo}")
     public UserDTO addUserVehicle(@PathVariable("billNo") int billNo) {
         viewCalled++;
         log.info("Inside UserController, view called by user:" + viewCalled);
