@@ -5,7 +5,6 @@ import com.practical3.vehicleregistory.entity.UserVehicle;
 import com.practical3.vehicleregistory.entity.dto.UserDTO;
 import com.practical3.vehicleregistory.entity.dto.mapper.UserDTOMapper;
 import com.practical3.vehicleregistory.entity.dto.mapper.UserDTOToUserVehicleMapper;
-import com.practical3.vehicleregistory.exception.UserNotFoundException;
 import com.practical3.vehicleregistory.repository.UserVehicleRepo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +43,6 @@ public class UserService {
         usersVehList.add(vehicle);
         log.info("Vehicle details pushed:" + vehicle);
         UserVehicleRepo.setUsersVehList(usersVehList);
-
         return (ArrayList<UserDTO>) usersVehList.stream().map(userDTOMapper).collect(Collectors.toList());
     }
 
