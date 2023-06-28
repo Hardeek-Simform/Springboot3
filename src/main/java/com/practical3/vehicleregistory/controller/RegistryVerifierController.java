@@ -1,7 +1,6 @@
 package com.practical3.vehicleregistory.controller;
 
 import com.practical3.vehicleregistory.entity.dto.VerifierDTO;
-import com.practical3.vehicleregistory.exception.UserVehicleNotFound;
 import com.practical3.vehicleregistory.service.VehicleRegistryService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,14 +18,10 @@ public class RegistryVerifierController {
     VehicleRegistryService vehicleRegistryService;
 
     @GetMapping("/{vehicleNo}")
-    public VerifierDTO getVerificationRegistry(@PathVariable("vehicleNo") String vehicleNo) {
+    public VerifierDTO getVerificationRegistryByVehicleNo(@PathVariable("vehicleNo") String vehicleNo) {
         vehicleSearch++;
         log.info("Inside RegistryVerifierController, Vehicle Search called:" + vehicleSearch);
         VerifierDTO verifierDTO = vehicleRegistryService.getVehicleVerification(vehicleNo);
-        if (verifierDTO == null) {
-            throw new UserVehicleNotFound();
-        } else {
-            return verifierDTO;
-        }
+        return verifierDTO;
     }
 }

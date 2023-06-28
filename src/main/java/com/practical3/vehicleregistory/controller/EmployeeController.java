@@ -19,6 +19,7 @@ public class EmployeeController {
     private static int deleteCall = 0;
     @Autowired
     EmployeeService employeeService;
+
     @GetMapping
     public ResponseEntity<ArrayList<UserVehicle>> displayAllData() {
         userListCall++;
@@ -31,9 +32,9 @@ public class EmployeeController {
     }
 
     @DeleteMapping("/{billNo}")
-    public void addUserVehicle(@PathVariable("billNo") int billNo) {
+    public void deleteUserByBillNo(@PathVariable("billNo") int billNo) {
         deleteCall++;
-        log.warn("inside EmployeeController, total data deletion called:" + userListCall);
+        log.info("inside EmployeeController, total data deletion called:" + userListCall);
         employeeService.deleteEntry(billNo);
     }
 }

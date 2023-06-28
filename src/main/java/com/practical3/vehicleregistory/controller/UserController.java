@@ -28,14 +28,14 @@ public class UserController {
     }
 
     @GetMapping
-    public ArrayList<UserDTO> addUserVehicle() {
+    public ArrayList<UserDTO> getAllUserVehicle() {
         viewAllCalled++;
         log.info("Inside UserController, view all called by user:" + viewAllCalled);
         return userService.getAllUserVehicles();
     }
 
     @GetMapping("/{billNo}")
-    public UserDTO addUserVehicle(@PathVariable("billNo") int billNo) {
+    public UserDTO getUserVehicleByBillNo(@PathVariable("billNo") int billNo) {
         viewCalled++;
         log.info("Inside UserController, view called by user:" + viewCalled);
         UserDTO selectedUserVehicle = userService.getSelectedUserVehicle(billNo);
